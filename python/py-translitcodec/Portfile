@@ -4,15 +4,15 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-translitcodec
-version             0.3
+version             0.4
 revision            1
 license             MIT
 categories          python
 platforms           darwin
-maintainers         nomaintainer
+maintainers         nstanger-local
 supported_archs     noarch
 
-python.versions     25 26 27
+python.versions     25 26 27 31 32 33 34
 
 distname            translitcodec-${version}
 
@@ -26,7 +26,7 @@ long_description    \
 homepage            https://pypi.python.org/pypi/translitcodec
 master_sites        https://pypi.python.org/packages/source/t/translitcodec/
 
-checksums           rmd160  b57ff03c8bd09617f24c7f5e0257fb877fbd8fa1 \
-                    sha256  7a088bc99a0654d5061416e61650c194472ea8d7e9f7395f2772dfa5a7f28499
+checksums           rmd160  253f8718d632778b82c24eae138102a19603cda9 \
+                    sha256  715a8995f84482cd23c1b02fd254ff4da66589e9d5222de10f7efe49d7bea683
 
 use_configure       no
