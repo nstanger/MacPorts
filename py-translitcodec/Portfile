@@ -1,0 +1,32 @@
+# $Id: Portfile 120912 2014-06-11 13:10:52Z ciserlohn@macports.org $
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-translitcodec
+version             0.3
+revision            1
+license             MIT
+categories          python
+platforms           darwin
+maintainers         nomaintainer
+supported_archs     noarch
+
+python.versions     25 26 27
+
+distname            translitcodec-${version}
+
+description         Unicode to 8-bit charset transliteration codec 
+long_description    \
+            This package contains codecs for transliterating ISO 10646 texts \
+            into best-effort representations using smaller coded character sets \
+            (ASCII, ISO 8859, etc.). The translation tables used by the codecs \
+            are from the transtab collection by Markus Kuhn.
+
+homepage            https://pypi.python.org/pypi/translitcodec
+master_sites        https://pypi.python.org/packages/source/t/translitcodec/
+
+checksums           rmd160  b57ff03c8bd09617f24c7f5e0257fb877fbd8fa1 \
+                    sha256  7a088bc99a0654d5061416e61650c194472ea8d7e9f7395f2772dfa5a7f28499
+
+use_configure       no

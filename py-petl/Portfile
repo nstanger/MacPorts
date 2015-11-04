@@ -1,0 +1,63 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 140520 2015-09-21 15:35:58Z michaelld@macports.org $
+
+PortSystem          1.0
+PortGroup           python 1.0
+PortGroup           select 1.0
+
+set my_name         petl
+name                py-${my_name}
+version             1.0.11
+revision            1
+categories-append   www
+license             MIT
+maintainers         nstanger openmaintainer
+description         A Python package for extracting, transforming and loading tables of data.
+long_description \
+    petl is a general purpose Python package \
+    for extracting, transforming and loading \
+    tables of data.
+
+platforms           darwin
+supported_archs     noarch
+
+homepage            https://github.com/alimanfoo/${my_name}
+master_sites        https://pypi.python.org/packages/source/p/${my_name}/
+distname            ${my_name}-${version}
+
+checksums           md5     2236ecab7d91807e7f0574318829e842 \
+                    rmd160  7c3a008874d8320cdfc4b1ebbd93b5b5079ac93f \
+                    sha256  6ee98f2ac3da79c70e37581726648e6006f995448175eef25812e5fb77050c23
+
+python.versions     26 27 34
+
+# possible dependencies
+# Y Cython==0.22
+# N intervaltree==2.0.4
+# Y lxml==3.4.3
+# Y numexpr==2.4.1
+# Y numpy==1.9.2
+# Y openpyxl==2.2.1
+# Y pandas==0.16.0
+# Y psycopg2==2.6
+# N PyMySQL==0.6.6
+# Y SQLAlchemy==1.0.0
+# Y tables==3.1.1
+# Y Whoosh==2.7.0
+# Y xlrd==0.9.3
+# N xlwt-future==0.8.0
+
+python.link_binaries    yes
+
+if {${name} ne ${subport}} {
+#     test.run  yes
+#     test.cmd  ${python.bin} setup.py test
+# from docs: nosetests -v petl
+
+    livecheck.type  none
+
+} else {
+    livecheck.type  regex
+    livecheck.url   https://pypi.python.org/pypi/${my_name}/json
+    livecheck.regex "${my_name}-(\\d+(?:\\.\\d+)*)${extract.suffix}"
+}
