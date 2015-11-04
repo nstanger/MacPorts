@@ -1,0 +1,49 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 140520 2015-09-21 15:35:58Z michaelld@macports.org $
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+set my_name         Gooey
+name                py-${my_name}
+version             0.8.14.0
+revision            1
+categories-append   graphics devel
+license             MIT
+maintainers         nstanger-local
+description         turn (almost) any command line program into a full GUI application with one line
+long_description \
+    Gooey converts your Console Applications into end-user-friendly GUI \
+    applications. It lets you focus on building robust, configurable \
+    programs in a familiar way, all without having to worry about how it \
+    will be presented to and interacted with by your average user.
+
+platforms           darwin
+supported_archs     noarch
+
+homepage            https://github.com/chriskiehl/${my_name}
+master_sites        https://pypi.python.org/packages/source/G/${my_name}/
+distname            ${my_name}-${version}
+
+checksums           md5     ae91f3fe7d81cdfde3b60cbf07843269 \
+                    rmd160  7cbb8d271a6236cd97bd3925d15508afba43fffc \
+                    sha256  24604ccc5eac37415cf86e9b8937a01e5723cd5a503f28320a7fbaedb317e2d7
+
+use_zip             yes
+
+python.versions     27 34
+
+python.link_binaries    yes
+
+if {${name} ne ${subport}} {
+#     test.run  yes
+#     test.cmd  ${python.bin} setup.py test
+
+    livecheck.type  none
+
+} else {
+    livecheck.type  regex
+    livecheck.url   https://pypi.python.org/pypi/${my_name}/json
+    livecheck.regex "${my_name}-(\\d+(?:\\.\\d+)*)${extract.suffix}"
+}
+
