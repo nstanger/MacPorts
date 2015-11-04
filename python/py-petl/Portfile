@@ -3,15 +3,14 @@
 
 PortSystem          1.0
 PortGroup           python 1.0
-PortGroup           select 1.0
 
 set my_name         petl
 name                py-${my_name}
 version             1.0.11
-revision            1
+revision            2
 categories-append   www
 license             MIT
-maintainers         nstanger openmaintainer
+maintainers         nstanger-local
 description         A Python package for extracting, transforming and loading tables of data.
 long_description \
     petl is a general purpose Python package \
@@ -31,23 +30,36 @@ checksums           md5     2236ecab7d91807e7f0574318829e842 \
 
 python.versions     26 27 34
 
-# possible dependencies
-# Y Cython==0.22
-# N intervaltree==2.0.4
-# Y lxml==3.4.3
-# Y numexpr==2.4.1
-# Y numpy==1.9.2
-# Y openpyxl==2.2.1
-# Y pandas==0.16.0
-# Y psycopg2==2.6
-# N PyMySQL==0.6.6
-# Y SQLAlchemy==1.0.0
-# Y tables==3.1.1
-# Y Whoosh==2.7.0
-# Y xlrd==0.9.3
-# N xlwt-future==0.8.0
-
 python.link_binaries    yes
+
+variant excel description {support for Microsoft Excel spreadsheets} {
+    depends_run-append port:py-xlrd
+    depends_run-append port:py-xlwt
+    depends_run-append port:py-openpyxl
+}
+variant hdf5 description {support for HDF5 files} {
+    depends_run-append port:py-tables
+}
+variant numpy description {support for numpy arrays} {
+    depends_run-append port:py-numpy
+}
+variant pandas description {support for pandas DataFrames} {
+    depends_run-append port:py-pandas
+}
+variant postgresql description {support for PostgreSQL databases} {
+    depends_run-append port:py-psycopg2
+    depends_run-append port:py-sqlalchemy
+}
+variant whoosh description {support for Whoosh text indexes} {
+    depends_run-append port:py-whoosh
+}
+variant xpath description {support for XPath expressions on XML files} {
+    depends_run-append port:py-lxml
+}
+
+# possible additional variants, require new portfiles
+# N intervaltree==2.0.4
+# N PyMySQL==0.6.6
 
 if {${name} ne ${subport}} {
 #     test.run  yes
@@ -61,3 +73,4 @@ if {${name} ne ${subport}} {
     livecheck.url   https://pypi.python.org/pypi/${my_name}/json
     livecheck.regex "${my_name}-(\\d+(?:\\.\\d+)*)${extract.suffix}"
 }
+
