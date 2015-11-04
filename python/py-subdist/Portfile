@@ -1,0 +1,32 @@
+# $Id: Portfile 120912 2014-06-11 13:10:52Z ciserlohn@macports.org $
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-subdist
+version             0.2.1
+revision            1
+license             MIT
+categories          python
+platforms           darwin
+maintainers         nomaintainer
+supported_archs     noarch
+
+python.versions     27
+
+distname            subdist-${version}
+
+description         substring edit distance 
+long_description    \
+            A C extension that uses a modified version of the Levenshtein\
+            distance algorithm to calculate fuzzy matches for substrings.
+
+homepage            http://www.ginstrom.com/code/subdist.html
+master_sites        http://ginstrom.com/code/ \
+                    https://pypi.python.org/packages/source/s/subdist/
+
+checksums           rmd160  c35c05eae4fbd144d2622af08bcc97b908a3abc7 \
+                    sha256  6ccf17e03764cbff78bb7a50260a07f303cf73e2086af692c77f4de769c6e38f
+
+use_configure       no
+extract.mkdir       yes
