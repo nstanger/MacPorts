@@ -7,7 +7,7 @@ PortGroup           python 1.0
 set my_name         Gooey
 name                py-${my_name}
 version             0.8.14.0
-revision            1
+revision            2
 categories-append   graphics devel
 license             MIT
 maintainers         nstanger-local
@@ -34,6 +34,8 @@ use_zip             yes
 python.versions     27 34
 
 python.link_binaries    yes
+
+depends_run-append      port:wxPython-3.0
 
 if {${name} ne ${subport}} {
 #     test.run  yes
