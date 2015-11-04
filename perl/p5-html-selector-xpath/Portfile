@@ -1,0 +1,27 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 111266 2013-09-17 23:45:04Z ryandesign@macports.org $
+
+# Note: This port already exists in MacPorts, but is limited to Perl 5.16.
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.branches      5.8 5.10 5.12 5.14 5.16 5.18 5.20
+perl5.setup         HTML-Selector-XPath 0.18
+license             {Artistic-1 GPL}
+categories          perl
+maintainers         nstanger-local
+description         CSS Selector to XPath compiler
+long_description    HTML::Selector::XPath is a utility function to compile full \
+                    set of CSS2 and partial CSS3 selectors to the equivalent \
+                    XPath expression.
+
+platforms           darwin
+
+checksums           md5     bb46fc14bb6ea3169a6176db00cc68f6 \
+                    sha1    1a828ac174aca4a9ab668c114143b82aa1311c3e \
+                    rmd160  8083ab6dde0f9554d55dafbb5b3424b8fe87ccce
+
+if {${perl5.major} ne ""} {
+    depends_lib-append  port:p${perl5.major}-test-base
+}

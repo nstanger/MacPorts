@@ -9,7 +9,7 @@ revision            1
 license             MIT
 categories          python
 platforms           darwin
-maintainers         nomaintainer
+maintainers         nstanger-local
 supported_archs     noarch
 
 python.versions     27
