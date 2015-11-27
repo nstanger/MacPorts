@@ -5,6 +5,7 @@ PortGroup  java 1.0
 
 name                commons-daemon
 version             1.0.15
+revision            1
 license             Apache-2
 
 categories          java

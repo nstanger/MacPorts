@@ -4,6 +4,7 @@ PortSystem		    1.0
 
 name			    pgtcl
 version			    1.9
+revision            1
 categories		    databases
 maintainers		    nstanger-local
 description 		Tcl PostgreSQL interface
