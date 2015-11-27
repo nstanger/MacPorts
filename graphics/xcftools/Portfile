@@ -1,0 +1,39 @@
+# $Id: Portfile 114120 2013-11-29 22:42:37Z jmr@macports.org $
+
+PortSystem          1.0
+
+name                xcftools
+version             1.0.7
+revision            0
+categories          graphics
+license             {public-domain GPL-2}
+maintainers         nstanger-local
+description         XCF manipulation tools
+long_description    Xcftools is a set of fast command-line tools for extracting \
+                    information from the Gimp's native file format XCF. The tools \
+                    are designed to allow efficient use of layered XCF files as \
+                    sources in a build system that use 'make' and similar tools \
+                    to manage automatic processing of the graphics. These tools \
+                    work independently of the Gimp engine and do not require the \
+                    Gimp to even be installed.
+
+platforms           darwin
+
+homepage            http://henning.makholm.net/software
+master_sites        http://henning.makholm.net/xcftools/
+
+checksums           rmd160  55977d14875d3b5cfe0e0f02a7d482c78dd4d846 \
+                    sha256  1ebf6d8405348600bc551712d9e4f7c33cc83e416804709f68d0700afde920a6
+
+depends_lib         port:libpng port:gettext
+
+depends_build       port:coreutils
+
+patchfiles          patch-xcf2png.c.diff
+
+configure.args      --with-gnu-ld --with-libiconv-prefix=${prefix} --with-libintl-prefix=${prefix}
+
+configure.ldflags-append    -lpng -lintl
+
+# System-provided /usr/bin/install doesn’t support -D flag.
+configure.install   ${prefix}/bin/ginstall -c -D

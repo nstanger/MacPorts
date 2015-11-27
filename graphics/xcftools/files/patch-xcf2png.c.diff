@@ -1,0 +1,13 @@
+--- xcf2png.c.orig	2014-02-08 12:08:45.000000000 +1300
++++ xcf2png.c	2014-02-08 12:09:06.000000000 +1300
+@@ -20,6 +20,10 @@
+ #include "flatten.h"
+ #include "palette.h"
+ #include <png.h>
++#ifndef PNG_NO_TYPECAST_NULL
++#define png_voidp_NULL (png_voidp)NULL
++#define png_error_ptr_NULL (png_error_ptr)NULL
++#endif
+ #include <stdlib.h>
+ #include <string.h>
+ #include <locale.h>
