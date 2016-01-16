@@ -1,10 +1,10 @@
 --- Makefile.orig	2015-03-12 08:54:34.000000000 +1300
-+++ Makefile	2016-01-16 17:29:13.000000000 +1300
++++ Makefile	2016-01-16 17:42:32.000000000 +1300
 @@ -26,5 +26,5 @@
  	$(CXX) -shared $(LDFLAGS) $(OBJECTS) -o libsfark.$(SO)
  
  install: libsfark.$(SO) sfArkLib.h
 -	$(INSTALL) libsfark.$(SO) $(DESTDIR)/usr/local/lib/libsfark.$(SO)
 -	$(INSTALL) sfArkLib.h $(DESTDIR)/usr/local/include/sfArkLib.h
-+	$(INSTALL) libsfark.$(SO) $(DESTDIR)/$(PREFIX)/lib/libsfark.$(SO)
-+	$(INSTALL) sfArkLib.h $(DESTDIR)/$(PREFIX)/include/sfArkLib.h
++	$(INSTALL) libsfark.$(SO) $(PREFIX)/lib/libsfark.$(SO)
++	$(INSTALL) sfArkLib.h $(PREFIX)/include/sfArkLib.h
