@@ -1,0 +1,17 @@
+--- Makefile.orig	2015-10-14 09:49:48.000000000 +1300
++++ Makefile	2016-01-16 18:38:05.000000000 +1300
+@@ -4,7 +4,7 @@
+ 
+ # Seems to be needed as clang doesn't appear to add this by default on
+ # OSX. Let me know if you know a better way.
+-LDFLAGS=-L/usr/local/lib
++LDFLAGS=-L$(PREFIX)/lib
+ 
+ LDLIBS=-lsfark -lz
+ 
+@@ -12,4 +12,4 @@
+ 	-rm sfarkxtc 2>/dev/null || true
+ 
+ install: sfarkxtc
+-	$(INSTALL) -D sfarkxtc $(DESTDIR)/usr/local/bin/sfarkxtc
++	$(INSTALL) sfarkxtc $(PREFIX)/bin/sfarkxtc
