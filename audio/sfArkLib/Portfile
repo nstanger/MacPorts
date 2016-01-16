@@ -5,9 +5,7 @@ PortSystem          1.0
 
 name                sfArkLib
 version             2.24
-revision            1
-categories          audio
-license             GPL-3
+revision            2
 maintainers         nstanger-local
 description         Library for decompressing sfArk soundfonts
 long_description    Library for decompressing sfArk soundfonts.
@@ -26,6 +24,7 @@ patchfiles          Makefile-${name}.diff
 use_configure       no
 
 worksrcdir          ${name}-${version}
+build.env           PREFIX="/opt/local"
 
 depends_lib         port:zlib
 

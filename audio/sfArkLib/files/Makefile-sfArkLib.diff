@@ -1,5 +1,14 @@
---- Makefile.orig	2015-03-12 08:54:34.000000000 +1300
-+++ Makefile	2016-01-16 17:42:32.000000000 +1300
+--- Makefile.orig	2016-01-16 18:25:56.000000000 +1300
++++ Makefile	2016-01-16 18:25:23.000000000 +1300
+@@ -9,7 +9,7 @@
+ 
+ OS := $(shell uname)
+ ifeq ($(OS),Darwin)
+-LDFLAGS += -flat_namespace -undefined suppress -dynamiclib
++LDFLAGS += -flat_namespace -undefined suppress -dynamiclib -install_name $(PREFIX)/lib/libsfark.$(SO)
+ SO = dylib
+ else 
+ LDFLAGS += -shared
 @@ -26,5 +26,5 @@
  	$(CXX) -shared $(LDFLAGS) $(OBJECTS) -o libsfark.$(SO)
  
