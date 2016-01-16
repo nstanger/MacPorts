@@ -1,0 +1,26 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 140520 2015-09-21 15:35:58Z michaelld@macports.org $
+
+PortSystem          1.0
+
+set my_name     Gooey
+name            ${my_name}
+version         2.24
+revision        1
+categories      audio
+license         GPL-3
+maintainers     nstanger-local
+description     Library for decompressing sfArk soundfonts
+
+platforms       darwin
+
+homepage        https://github.com/raboof/${my_name}
+master_sites    https://github.com/raboof/${my_name}/archive/
+distname        ${version}
+
+checksums       rmd160  3566534af4776638fceddb13b0f4170d37744fad \
+                sha256  f1539666c03779a74018f6e6f0da60bcf2be687d87d9cb71e23dcc8c5213fa2f
+
+use_configure   no
+
+depends_lib     port:zlib
