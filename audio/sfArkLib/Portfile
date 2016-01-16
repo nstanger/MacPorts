@@ -21,6 +21,8 @@ distname            ${version}
 checksums           rmd160  3566534af4776638fceddb13b0f4170d37744fad \
                     sha256  f1539666c03779a74018f6e6f0da60bcf2be687d87d9cb71e23dcc8c5213fa2f
 
+patchfiles          Makefile-${name}.diff
+
 use_configure       no
 
 worksrcdir          ${name}-${version}
