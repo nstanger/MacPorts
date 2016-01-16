@@ -24,4 +24,6 @@ checksums           rmd160  3566534af4776638fceddb13b0f4170d37744fad \
 
 use_configure       no
 
+worksrcdir          ${my_name}-${version}
+
 depends_lib         port:zlib
