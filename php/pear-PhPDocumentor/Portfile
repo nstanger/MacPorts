@@ -1,0 +1,19 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 94227 2012-06-13 00:00:32Z pixilla@macports.org $
+
+PortSystem          1.0
+PortGroup           pear 1.0
+
+pear.cmd-php        ${prefix}/bin/php
+pear.setup          PhpDocumentor 2.2.0 pear.phpdoc.org
+categories-append   net www
+platforms           darwin
+maintainers         nstanger openmaintainer
+
+description         PEAR PhpDocumentor package
+long_description    ${description}
+
+checksums           rmd160  e5cde08f53b4271d26c332c4d9df01bbd8a9b947 \
+                    sha256  6de1fc5ea2c000cea791adc6f4074e6eab68c812448715b06ed7966a4e2dfc09
+
+depends_lib-append  port:php-xslcache

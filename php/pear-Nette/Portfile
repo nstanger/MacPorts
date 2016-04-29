@@ -1,0 +1,18 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 94227 2012-06-13 00:00:32Z pixilla@macports.org $
+
+PortSystem          1.0
+PortGroup           pear 1.0
+
+pear.setup          Nette 2.0.13 pear.nette.org
+categories-append   net www
+platforms           darwin
+maintainers         nstanger
+
+description         PEAR Nette package
+long_description    ${description}
+
+patchfiles          patch-package.xml.diff
+
+checksums           rmd160  e95cb9d13f77fad5498f695e53e29d82a5318d32 \
+                    sha256  503c92f604d0863fdecce6e42cc05072f31d20601ae57c5b6ee4783bcda999f2

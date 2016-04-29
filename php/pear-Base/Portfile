@@ -1,0 +1,16 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 94227 2012-06-13 00:00:32Z pixilla@macports.org $
+
+PortSystem          1.0
+PortGroup           pear 1.0
+
+pear.setup          Base 1.8 components.ez.no
+categories-append   net www
+platforms           darwin
+maintainers         nstanger
+
+description         PEAR Base package from eZ Components
+long_description    ${description}
+
+checksums           rmd160  260860fb0cbbe4c88ef95b7f3fbd7e1ce66f5a13 \
+                    sha256  394229a2bcbd13f53c5e9b528706fdcfe7f858b27a0aefd473851062a1639625

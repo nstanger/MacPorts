@@ -1,0 +1,18 @@
+--- packagesource/apigen.php.orig	2012-09-09 08:27:43.000000000 +1200
++++ packagesource/apigen.php	2013-12-10 11:28:07.000000000 +1300
+@@ -27,7 +27,7 @@
+ 	// PEAR package
+ 
+ 	@include '@php_dir@/Nette/loader.php';
+-	@include '@php_dir@/Texy/texy.php';
++	@include '@php_dir@/Texy/src/texy.php';
+ } else {
+ 	// Downloaded package
+ 
+@@ -251,4 +251,4 @@
+ 	}
+ 
+ 	die(1);
+-}
+\ No newline at end of file
++}

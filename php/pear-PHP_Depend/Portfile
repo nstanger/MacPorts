@@ -1,0 +1,17 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 94227 2012-06-13 00:00:32Z pixilla@macports.org $
+
+PortSystem          1.0
+PortGroup           pear 1.0
+
+pear.cmd-php        ${prefix}/bin/php
+pear.setup          PHP_Depend 1.1.4 pear.pdepend.org
+categories-append   net www
+platforms           darwin
+maintainers         nstanger
+
+description         PEAR PHP_Depend package
+long_description    ${description}
+
+checksums           rmd160  7eaba26166263b2584c6639b7167019a05a3c42d \
+                    sha256  1d362fd1d47f4be23c0111c85d2461deaec8e3084918df6c3f0a326095dc0556

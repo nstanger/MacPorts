@@ -1,0 +1,20 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 94227 2012-06-13 00:00:32Z pixilla@macports.org $
+
+PortSystem          1.0
+PortGroup           pear 1.0
+
+pear.setup          PHP_CodeCoverage 1.2.13 pear.phpunit.de
+categories-append   net www
+platforms           darwin
+maintainers         nstanger
+
+description         PEAR PHP_CodeCoverage package
+long_description    ${description}
+
+checksums           rmd160  84ad7a1c8d57451bebfa03cb44c17ab21d9ae7a6 \
+                    sha256  164de075b3588c0a757dd7bf348489954162dbc097e8932f564e5f3891bd1a2e
+
+depends_lib-append  port:pear-File_Iterator \
+                    port:pear-PHP_TokenStream \
+                    port:pear-Text_Template

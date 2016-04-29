@@ -1,0 +1,16 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 94227 2012-06-13 00:00:32Z pixilla@macports.org $
+
+PortSystem          1.0
+PortGroup           pear 1.0
+
+pear.setup          FSHL 2.1.0 pear.kukulich.cz
+categories-append   net www
+platforms           darwin
+maintainers         nstanger
+
+description         PEAR FSHL package
+long_description    ${description}
+
+checksums           rmd160  6020253a6b3bc54a21845db1bcd012cfcd875ae1 \
+                    sha256  d7e6d258f5da747114c7e2ce9e716ee3d671cd4c8425d7a59492b8804daf4b51

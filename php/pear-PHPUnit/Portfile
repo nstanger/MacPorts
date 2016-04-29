@@ -1,0 +1,24 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 94227 2012-06-13 00:00:32Z pixilla@macports.org $
+
+PortSystem          1.0
+PortGroup           pear 1.0
+
+pear.cmd-php        ${prefix}/bin/php
+pear.setup          PHPUnit 3.7.28 pear.phpunit.de
+categories-append   net www
+platforms           darwin
+maintainers         nstanger openmaintainer
+
+description         PEAR PHPUnit package
+long_description    ${description}
+
+checksums           rmd160  9a08f941e098773d282fe9ba41cd03a271489fc9 \
+                    sha256  e541a28c3451edd282271b87d642eea4fbd5887754cfa2d8c3f2c8a98de2c1c8
+
+depends_lib-append  port:pear-File_Iterator \
+                    port:pear-Text_Template \
+                    port:pear-PHP_CodeCoverage \
+                    port:pear-PHP_Timer \
+                    port:pear-PHPUnit_MockObject \
+                    port:php-yaml

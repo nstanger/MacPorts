@@ -1,0 +1,18 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 94227 2012-06-13 00:00:32Z pixilla@macports.org $
+
+PortSystem          1.0
+PortGroup           pear 1.0
+
+pear.setup          ConsoleTools 1.6.1 components.ez.no
+categories-append   net www
+platforms           darwin
+maintainers         nstanger
+
+description         PEAR ConsoleTools package from eZ Components
+long_description    ${description}
+
+checksums           rmd160  d29d61de8d9c355e865cd7a308bb1af25df07a5a \
+                    sha256  691dacecaf52796974eb98d73fea6c97465fa5d11d6a117f0aa61f4e13e96dc9
+
+depends_lib-append  port:pear-Base

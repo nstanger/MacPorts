@@ -1,0 +1,16 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 94227 2012-06-13 00:00:32Z pixilla@macports.org $
+
+PortSystem          1.0
+PortGroup           pear 1.0
+
+pear.setup          Texy 2.3.0 pear.texy.info
+categories-append   net www
+platforms           darwin
+maintainers         nstanger
+
+description         PEAR Texy package
+long_description    ${description}
+
+checksums           rmd160  deb38f7956836ee0c3cb8606f9c6407e720388b1 \
+                    sha256  4e213c8ee854de939f5bbea28e40db3cb471fae6cc87aa91209e13312ea16750

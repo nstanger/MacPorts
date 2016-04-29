@@ -1,0 +1,11 @@
+--- packagesource/package.xml.orig	2013-12-07 21:49:15.000000000 +1300
++++ packagesource/package.xml	2013-12-07 21:27:44.000000000 +1300
+@@ -275,7 +275,7 @@
+ 			<file name="Nette/Utils/Strings.php" role="php" />
+ 			<file name="Nette/Utils/Tokenizer.php" role="php" />
+ 			<file name="Nette/Utils/Validators.php" role="php" />
+-			<file name="readme.txt" role="php" />
++			<file name="readme.txt" role="doc" />
+ 		</dir>
+ 	</contents>
+ 	<dependencies>

@@ -1,0 +1,16 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 94227 2012-06-13 00:00:32Z pixilla@macports.org $
+
+PortSystem          1.0
+PortGroup           pear 1.0
+
+pear.setup          Text_Template 1.1.4 pear.phpunit.de
+categories-append   net www
+platforms           darwin
+maintainers         nstanger
+
+description         PEAR Text_Template package
+long_description    ${description}
+
+checksums           rmd160  6a627a1cb7637d7921b3114baaece377b6b0483c \
+                    sha256  905e9ed8f26cbe41b3c6ab5d0a8f760aee83c5abbccba48d27aa2975decf937b

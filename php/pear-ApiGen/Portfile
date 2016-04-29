@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 94227 2012-06-13 00:00:32Z pixilla@macports.org $
+
+PortSystem          1.0
+PortGroup           pear 1.0
+
+pear.cmd-php        ${prefix}/bin/php
+pear.setup          ApiGen 2.8.0 pear.apigen.org
+categories-append   net www
+platforms           darwin
+maintainers         nstanger openmaintainer
+
+description         PEAR ApiGen package
+long_description    ${description}
+
+patchfiles          patch-apigen.php.diff
+
+checksums           rmd160  e8cefdb4b4c7493fe0d60a92754617f693a15856 \
+                    sha256  36d9e5040d6951361874a55b07a71ac042f493216eabb1c0e7f3f57fabc42466
+
+depends_lib-append  port:pear-FSHL \
+                    port:pear-Nette \
+                    port:pear-Texy \
+                    port:pear-TokenReflection
+
