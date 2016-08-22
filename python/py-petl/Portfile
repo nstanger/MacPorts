@@ -6,8 +6,8 @@ PortGroup           python 1.0
 
 set my_name         petl
 name                py-${my_name}
-version             1.0.11
-revision            3
+version             1.1.0
+revision            1
 categories-append   textproc
 license             MIT
 maintainers         nstanger-local
@@ -24,9 +24,9 @@ homepage            https://github.com/alimanfoo/${my_name}
 master_sites        https://pypi.python.org/packages/source/p/${my_name}/
 distname            ${my_name}-${version}
 
-checksums           md5     2236ecab7d91807e7f0574318829e842 \
-                    rmd160  7c3a008874d8320cdfc4b1ebbd93b5b5079ac93f \
-                    sha256  6ee98f2ac3da79c70e37581726648e6006f995448175eef25812e5fb77050c23
+checksums           md5     9d53a5915c99931eeca556cd28dcf05f \
+                    rmd160  f6e2feccd870a19ff71b2a97665b9d452b0265bf \
+                    sha256  06e7b8bcab62dcdcf862715d3ddf0a705a603a60d003d556a510bfa9ea3782a0
 
 python.versions     26 27 34
 
