@@ -1,0 +1,77 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+
+name                batik
+version             1.8
+platforms           darwin
+categories          java graphics
+maintainers         nstanger-local
+license             Apache-2
+supported_archs     noarch
+
+description         Java SVG Toolkit
+
+long_description    Batik is a Java-based toolkit for applications or \
+                    applets that want to use images in the Scalable \
+                    Vector Graphics (SVG) format for various purposes, \
+                    such as display, generation or manipulation.
+
+homepage            http://xmlgraphics.apache.org/batik
+
+master_sites        http://www-us.apache.org/dist/xmlgraphics/batik/source/ \
+                    http://www-eu.apache.org/dist/xmlgraphics/batik/source/
+distname            ${name}-src-${version}
+worksrcdir          ${name}-${version}
+use_zip             yes
+
+checksums           md5     6e65afa4ab4d99796716f89f579a2d64 \
+                    sha1    2a91b64758fb6969f5aeee9b0cdfdf48a9af3faf \
+                    rmd160  b222b4697553b2a384b53d78b48c7834a32be23e
+
+depends_build       bin:ant:apache-ant
+
+use_configure       no
+
+build.cmd           ant
+build.target        jars all-jar
+
+destroot {
+    xinstall -m 755 -d \
+        ${destroot}${prefix}/share/java/${name} \
+        ${destroot}${prefix}/share/doc/${name}
+
+    xinstall -m 644 \
+        ${worksrcpath}/${name}-${version}/batik-${version}.jar \
+        ${destroot}${prefix}/share/java/
+
+    xinstall -m 644 -W ${worksrcpath}/${name}-${version}/lib \
+        batik-all-${version}.jar \
+        batik-anim-${version}.jar \
+        batik-awt-util-${version}.jar \
+        batik-bridge-${version}.jar \
+        batik-codec-${version}.jar \
+        batik-css-${version}.jar \
+        batik-dom-${version}.jar \
+        batik-ext-${version}.jar \
+        batik-extension-${version}.jar \
+        batik-gui-util-${version}.jar \
+        batik-gvt-${version}.jar \
+        batik-parser-${version}.jar \
+        batik-script-${version}.jar \
+        batik-svg-dom-${version}.jar \
+        batik-svggen-${version}.jar \
+        batik-swing-${version}.jar \
+        batik-transcoder-${version}.jar \
+        batik-util-${version}.jar \
+        batik-xml-${version}.jar \
+        ${destroot}${prefix}/share/java/${name}/
+
+    xinstall -m 644 -W ${worksrcpath} \
+        KEYS \
+        LICENSE \
+        MAINTAIN \
+        NOTICE \
+        README \
+        ${destroot}${prefix}/share/doc/${name}
+}
