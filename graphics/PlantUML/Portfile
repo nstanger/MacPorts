@@ -1,0 +1,45 @@
+# $Id: Portfile 114120 2013-11-29 22:42:37Z jmr@macports.org $
+
+PortSystem  1.0
+PortGroup   java 1.0
+
+name                plantuml
+version             8056
+categories          graphics
+license             GPL-2
+maintainers         nstanger-local
+description         Create UML diagrams using a simple textual description language
+long_description    PlantUML is a component that allows to quickly write Sequence diagram, \
+                    Usecase diagram, Class diagram, Activity diagram, Component diagram, \
+                    State diagram, Object diagram, Deployment diagram, Timing diagram, \
+                    Wireframe graphical interface, and many more. Diagrams are defined \
+                    using a simple and intuitive language.
+
+platforms           darwin
+
+homepage            http://plantuml.com/
+master_sites        sourceforge:plantuml
+
+distname            ${name}-gplv2-${version}
+
+extract.mkdir       yes
+
+checksums           rmd160  18ae8f6d46a82ec304376a4a9be17dcdba1b2bd9 \
+                    sha256  09f4a7adefc85b5c27f8abb916f277f2e07edaa2a62d8481c79bc5d6e40fb603
+
+depends_lib         port:graphviz
+
+depends_build       bin:ant:apache-ant
+
+use_configure       no
+
+build.cmd           ant
+build.target        dist
+
+destroot {
+    xinstall -m 755 -d \
+        ${destroot}${prefix}/share/doc/${name} \
+        ${destroot}${prefix}/share/java
+    xinstall -m 644 ${worksrcpath}/${name}.jar ${destroot}${prefix}/share/java
+    xinstall -m 644 ${worksrcpath}/COPYING ${destroot}${prefix}/share/doc/${name}
+}
