@@ -4,7 +4,7 @@ PortSystem  1.0
 PortGroup   java 1.0
 
 name                plantuml
-version             8056
+version             8058
 categories          graphics
 license             GPL-2
 maintainers         nstanger-local
@@ -24,8 +24,8 @@ distname            ${name}-gplv2-${version}
 
 extract.mkdir       yes
 
-checksums           rmd160  18ae8f6d46a82ec304376a4a9be17dcdba1b2bd9 \
-                    sha256  09f4a7adefc85b5c27f8abb916f277f2e07edaa2a62d8481c79bc5d6e40fb603
+checksums           rmd160  213c7aadaef13f629094b3a20c7e3d374f98d1d2 \
+                    sha256  0b3528860c0ddaaef2a56aa3ed8caef3521403c439385f22741c2101c82e5ef2
 
 depends_lib         port:graphviz
 
