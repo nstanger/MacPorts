@@ -1,0 +1,29 @@
+PortSystem 1.0
+
+name			postgresql-jdbc
+version			42.1.1
+categories		java databases
+license			BSD
+maintainers		nstanger-local
+description		PostgreSQL JDBC driver
+long_description	Pure Java JDBC driver for connecting to PostgreSQL databases.
+homepage		http://jdbc.postgresql.org/
+
+platforms		darwin
+supported_archs	noarch
+
+distfiles		postgresql-${version}.jar
+master_sites    ${homepage}/download/
+checksums 		md5 336361c79bf80cef876bb88696d58183 \
+				sha1 8a0b76d763f5382d6357c412eeb14970ba4405f3 \
+				rmd160 7f2dbb6494ac7b79c324b87d4430de79c4f431a5
+
+use_configure	no
+
+build 			{}
+
+destroot {
+	xinstall -m 755 -d ${destroot}${prefix}/share/java
+	file copy ${distpath}/postgresql-${version}.jar \
+		${destroot}${prefix}/share/java/postgresql.jar
+}
