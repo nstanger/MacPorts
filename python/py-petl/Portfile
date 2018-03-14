@@ -7,7 +7,7 @@ PortGroup           python 1.0
 set my_name         petl
 name                py-${my_name}
 version             1.1.0
-revision            1
+revision            2
 categories-append   textproc
 license             MIT
 maintainers         nstanger-local
@@ -21,7 +21,7 @@ platforms           darwin
 supported_archs     noarch
 
 homepage            https://github.com/alimanfoo/${my_name}
-master_sites        https://pypi.python.org/packages/source/p/${my_name}/
+master_sites        pypi:p/${my_name}/
 distname            ${my_name}-${version}
 
 checksums           md5     9d53a5915c99931eeca556cd28dcf05f \
