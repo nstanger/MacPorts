@@ -5,9 +5,9 @@ PortGroup   java 1.0
 
 name                plantuml
 epoch               1
-version             1.2018.1
+version             1.2018.2
 categories          graphics
-license             GPL-2
+license             GPL-3
 maintainers         nstanger-local
 description         Create UML diagrams using a simple textual description language
 long_description    PlantUML is a component that allows to quickly write Sequence diagram, \
@@ -21,12 +21,12 @@ platforms           darwin
 homepage            http://plantuml.com/
 master_sites        sourceforge:plantuml
 
-distname            ${name}-gplv2-${version}
+distname            ${name}-${version}
 
-extract.mkdir       yes
+extract.mkdir       no
 
-checksums           rmd160  5afb8d022c61ff1af87a09da69a9c429263a2ff0 \
-                    sha256  684be76e99ff99df910a9796423bcd5fbf97dfb706d157dcae7ec6b554c295b8
+checksums           rmd160  3af776e91e5a5e676fbd184db7d03b63feca2456 \
+                    sha256  c326fd164ff1a741aaf1cc2003c258d7d727aaec370e5a7b3e9ef70d99442196
 
 depends_lib         port:graphviz
 
