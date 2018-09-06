@@ -1,0 +1,39 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=Portfile:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+set my_name         pyte
+set _n              [string index ${my_name} 0]
+name                py-${my_name}
+version             0.8.0
+categories-append   devel
+license             LGPL-3
+platforms           darwin
+supported_archs     noarch
+
+maintainers         nstanger-local
+
+description         an in memory VTXXX-compatible terminal emulator
+long_description    An in memory VTXXX-compatible terminal emulator. \
+                    XXX stands for a series of video terminals, \
+                    developed by DEC between 1970 and 1995. The \
+                    first, and probably the most famous one, was VT100 \
+                    terminal, which is now a de-facto standard for all \
+                    virtual terminal emulators. ${my_name} follows the suit.
+
+homepage            https://github.com/selectel/${my_name}
+master_sites        pypi:${_n}/${my_name}/
+python.versions     27 35 36 37
+
+
+if {${name} ne ${subport}} {
+    distname            ${my_name}-${version}
+
+    checksums           sha256  7e71d03e972d6f262cbe8704ff70039855f05ee6f7ad9d7129df9c977b5a88c5
+    livecheck.type      none
+} else {
+    livecheck.type      regex
+    livecheck.url       https://pypi.python.org/pypi/${my_name}/json
+    livecheck.regex     {${my_name}-(\d+(?:\.\d+)*)\.[tz]}
+}
