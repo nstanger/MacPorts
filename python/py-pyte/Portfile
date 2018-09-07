@@ -7,6 +7,7 @@ set my_name         pyte
 set _n              [string index ${my_name} 0]
 name                py-${my_name}
 version             0.8.0
+revision            1
 categories-append   devel
 license             LGPL-3
 platforms           darwin
@@ -26,12 +27,14 @@ homepage            https://github.com/selectel/${my_name}
 master_sites        pypi:${_n}/${my_name}/
 python.versions     27 35 36 37
 
-
 if {${name} ne ${subport}} {
     distname            ${my_name}-${version}
 
     checksums           sha256  7e71d03e972d6f262cbe8704ff70039855f05ee6f7ad9d7129df9c977b5a88c5
     livecheck.type      none
+    
+    depends_build-append    port:py${python.version}-setuptools \
+                            port:py${python.version}-pytest-runner
 } else {
     livecheck.type      regex
     livecheck.url       https://pypi.python.org/pypi/${my_name}/json
