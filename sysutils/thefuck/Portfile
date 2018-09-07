@@ -7,7 +7,7 @@ PortGroup           python 1.0
 name                thefuck
 set _n              [string index ${name} 0]
 version             3.27
-revision            1
+revision            2
 categories          sysutils
 license             MIT
 maintainers         nstanger-local
@@ -34,11 +34,14 @@ livecheck.regex "${name}-(\\d+(?:\\.\\d+)*)${extract.suffix}"
 
 if {${python.version} eq ${python.default_version}} {
     depends_run-append  port:py-psutil port:py-colorama port:py-six \
-        port:py-decorator port:py-pyte
+        port:py-decorator port:py-pyte port:py-pathlib2
 } else {
     depends_run-append  port:py${python.version}-psutil \
         port:py${python.version}-colorama port:py${python.version}-six \
         port:py${python.version}-decorator port:py${python.version}-pyte
+    if {${python.version} lt 34} {
+        depends_run-append  port:py${python.version}-pathlib2
+    }
 }
 
 notes   "
