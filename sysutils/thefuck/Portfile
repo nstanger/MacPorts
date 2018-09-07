@@ -7,7 +7,7 @@ PortGroup           python 1.0
 name                thefuck
 set _n              [string index ${name} 0]
 version             3.27
-revision            2
+revision            3
 categories          sysutils
 license             MIT
 maintainers         nstanger-local
@@ -26,20 +26,20 @@ distname            ${name}-${version}
 checksums           sha256  e406996f4ce2a726d98a0b1041d11ea5409e7d4f9e31871e4ea39d462fc6ed2d
 
 python.versions         27 34 35 36 37
-python.default_version  27
+python.default_version  37
 
 livecheck.type  regex
 livecheck.url   https://pypi.python.org/pypi/${name}/json
 livecheck.regex "${name}-(\\d+(?:\\.\\d+)*)${extract.suffix}"
 
-if {${python.version} eq ${python.default_version}} {
+if {${python.version} eq 27} {
     depends_run-append  port:py-psutil port:py-colorama port:py-six \
         port:py-decorator port:py-pyte port:py-pathlib2
 } else {
     depends_run-append  port:py${python.version}-psutil \
         port:py${python.version}-colorama port:py${python.version}-six \
         port:py${python.version}-decorator port:py${python.version}-pyte
-    if {${python.version} lt 34} {
+    if {${python.version} < 34} {
         depends_run-append  port:py${python.version}-pathlib2
     }
 }
