@@ -5,9 +5,10 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 set my_name         petl
+set _n              [string index ${my_name} 0]
 name                py-${my_name}
-version             1.1.0
-revision            2
+version             1.2.0
+revision            0
 categories-append   textproc
 license             MIT
 maintainers         nstanger-local
@@ -21,40 +22,69 @@ platforms           darwin
 supported_archs     noarch
 
 homepage            https://github.com/alimanfoo/${my_name}
-master_sites        pypi:p/${my_name}/
+master_sites        pypi:${_n}/${my_name}/
 distname            ${my_name}-${version}
 
-checksums           md5     9d53a5915c99931eeca556cd28dcf05f \
-                    rmd160  f6e2feccd870a19ff71b2a97665b9d452b0265bf \
-                    sha256  06e7b8bcab62dcdcf862715d3ddf0a705a603a60d003d556a510bfa9ea3782a0
+checksums          sha256  9f10da5719d731844ccc278f6dfc092e17eb93197d92c556a9d5903202226863
 
-python.versions     26 27 34
+python.versions     27 34 35 36 37
 
 python.link_binaries    yes
 
 variant excel description {support for Microsoft Excel spreadsheets} {
-    depends_run-append port:py-xlrd
-    depends_run-append port:py-xlwt
-    depends_run-append port:py-openpyxl
+    if {${version} < 34} {
+        depends_run-append port:py-xlrd
+        depends_run-append port:py-xlwt
+        depends_run-append port:py-openpyxl
+    } else {
+        depends_run-append port:py${python.version}-xlrd
+        depends_run-append port:py${python.version}-xlwt
+        depends_run-append port:py${python.version}-openpyxl
+    }
 }
 variant hdf5 description {support for HDF5 files} {
-    depends_run-append port:py-tables
+    if {${version} < 34} {
+        depends_run-append port:py-tables
+    } else {
+        depends_run-append port:py${python.version}-tables
+    }
 }
 variant numpy description {support for numpy arrays} {
-    depends_run-append port:py-numpy
+    if {${version} < 34} {
+        depends_run-append port:py-numpy
+    } else {
+        depends_run-append port:py${python.version}-numpy
+    }
 }
 variant pandas description {support for pandas DataFrames} {
-    depends_run-append port:py-pandas
+    if {${version} < 34} {
+        depends_run-append port:py-pandas
+    } else {
+        depends_run-append port:py${python.version}-pandas
+    }
 }
 variant postgresql description {support for PostgreSQL databases} {
-    depends_run-append port:py-psycopg2
-    depends_run-append port:py-sqlalchemy
+    if {${version} < 34} {
+        depends_run-append port:py-psycopg2
+        depends_run-append port:py-sqlalchemy
+    } else {
+        depends_run-append port:py${python.version}-psycopg2
+        depends_run-append port:py${python.version}-sqlalchemy
+    }
 }
 variant whoosh description {support for Whoosh text indexes} {
-    depends_run-append port:py-whoosh
+    if {${version} < 34} {
+        depends_run-append port:py-whoosh
+    } else {
+        depends_run-append port:py${python.version}-whoosh
+    }
 }
 variant xpath description {support for XPath expressions on XML files} {
-    depends_run-append port:py-lxml
+    if {${version} < 34} {
+        depends_run-append port:py-lxml
+    } else {
+        depends_run-append port:py${python.version}-lxml
+    }
 }
 
 # possible additional variants, require new portfiles
