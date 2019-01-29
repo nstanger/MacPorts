@@ -5,7 +5,7 @@ PortGroup   java 1.0
 
 name                plantuml
 epoch               1
-version             1.2018.13
+version             1.2019.0
 categories          graphics
 license             GPL-3
 maintainers         nstanger-local
@@ -21,12 +21,13 @@ platforms           darwin
 homepage            http://plantuml.com/
 master_sites        sourceforge:plantuml
 
+# use "GPL Java Source"
 distname            ${name}-${version}
 
 extract.mkdir       no
 
-checksums           rmd160  25d641f6cdc6e5f6a83343c7af4d777733150b04 \
-                    sha256  ab6dc745d5edd4617451de92b4f89020ec0e81eae1e8650c924b93abb870412d
+checksums           rmd160  aa7245cf3e6367e1807064d76943a9d9144280a6 \
+                    sha256  161108a41d7cd10354450e9758929d9226ac238ee231f663e7c0bac1c13b9a57
 
 depends_lib         port:graphviz
 
