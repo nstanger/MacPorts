@@ -4,7 +4,7 @@ PortSystem		    1.0
 
 name			    pgtcl
 version			    1.9
-revision            1
+revision            2
 categories		    databases
 maintainers		    nstanger-local
 description 		Tcl PostgreSQL interface
@@ -17,13 +17,13 @@ checksums		    md5 35110ce111c5746b342577cb64db8f15 \
 			        rmd160  8f9af30d416908e6b3efe10c924e61de8d8eb10c
 worksrcdir          ${name}${version}
 
-configure.env       PATH=$env(PATH):${prefix}/lib/postgresql93/bin
+configure.env       PATH=$env(PATH):${prefix}/lib/postgresql10/bin
 configure.args      --bindir=${prefix}/sbin/${name} \
                     --mandir=${prefix}/share/man/${name} \
                     --sysconfdir=${prefix}/etc/${name} \
                     --libdir=${prefix}/lib
 depends_lib		    port:tcl \
-			        port:postgresql93
+			        port:postgresql10
 
 post-extract {
     file rename [glob ${workpath}/flightaware-Pgtcl-*] ${worksrcpath}
