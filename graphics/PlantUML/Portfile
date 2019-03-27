@@ -5,7 +5,7 @@ PortGroup   java 1.0
 
 name                plantuml
 epoch               1
-version             1.2019.0
+version             1.2019.3
 categories          graphics
 license             GPL-3
 maintainers         nstanger-local
@@ -26,8 +26,8 @@ distname            ${name}-${version}
 
 extract.mkdir       no
 
-checksums           rmd160  aa7245cf3e6367e1807064d76943a9d9144280a6 \
-                    sha256  161108a41d7cd10354450e9758929d9226ac238ee231f663e7c0bac1c13b9a57
+checksums           rmd160  65b4cc97c6e2be8f904e7be44fee13e98f2ba1c5 \
+                    sha256  ea57bb46db05660fa845862a4fbabedb3aa7bddcc18a05679d86390cb6c2555c
 
 depends_lib         port:graphviz
 
