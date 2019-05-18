@@ -3,7 +3,7 @@
 PortSystem		    1.0
 
 name			    pgtcl
-version			    2.6.2
+version			    2.6.3
 #revision            2
 categories		    databases
 maintainers		    nstanger-local
@@ -12,17 +12,14 @@ long_description	Tcl client interface to PostgreSQL
 homepage		    http://flightaware.github.io/Pgtcl/
 master_sites		https://github.com/flightaware/Pgtcl/tarball/master
 platforms		    darwin
-checksums		    md5 7e8b49caa7e685659b84122d87805560 \
-			        sha1 63ea95e8cc96f6ab17b69a69356c30b7672f1fd8 \
-			        rmd160  7efbfcd175d853be22b3f61b73bb108a094d1e05
+checksums		    rmd160  415410c21895f9263a2ff703d04ed374c25ad562 \
+                    sha256  3fd56901af487cc0a800eb88aedf7e0405e604c159a6f76d6ed95181123adbb2
 worksrcdir          ${name}${version}
 
 use_autoconf        yes
+use_parallel_build  no
 configure.env       PATH=$env(PATH):${prefix}/lib/postgresql10/bin
-configure.args      --bindir=${prefix}/sbin/${name} \
-                    --mandir=${prefix}/share/man/${name} \
-                    --sysconfdir=${prefix}/etc/${name} \
-                    --libdir=${prefix}/lib
+configure.args      --prefix=${prefix} --exec-prefix=${prefix}
 depends_lib		    port:tcl \
 			        port:postgresql10
 
