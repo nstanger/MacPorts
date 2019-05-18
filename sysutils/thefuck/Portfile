@@ -6,8 +6,8 @@ PortGroup           python 1.0
 
 name                thefuck
 set _n              [string index ${name} 0]
-version             3.27
-revision            3
+version             3.28
+#revision            3
 categories          sysutils
 license             MIT
 maintainers         nstanger-local
@@ -23,7 +23,7 @@ homepage            https://github.com/nvbn/${name}
 master_sites        pypi:${_n}/${name}/
 distname            ${name}-${version}
 
-checksums           sha256  e406996f4ce2a726d98a0b1041d11ea5409e7d4f9e31871e4ea39d462fc6ed2d
+checksums           sha256  cc123eb1e6962d315b777db286e6a172231f02eff00ab340fdd38c4504badc3a
 
 python.versions         27 34 35 36 37
 python.default_version  37
