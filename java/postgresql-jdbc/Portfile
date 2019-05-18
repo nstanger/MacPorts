@@ -1,7 +1,7 @@
 PortSystem 1.0
 
 name			postgresql-jdbc
-version			42.1.1
+version			42.2.5
 categories		java databases
 license			BSD
 maintainers		nstanger-local
@@ -14,9 +14,8 @@ supported_archs	noarch
 
 distfiles		postgresql-${version}.jar
 master_sites    ${homepage}/download/
-checksums 		md5 336361c79bf80cef876bb88696d58183 \
-				sha1 8a0b76d763f5382d6357c412eeb14970ba4405f3 \
-				rmd160 7f2dbb6494ac7b79c324b87d4430de79c4f431a5
+checksums 		rmd160 b853beafdb5ce13cfc9ec404c94a2601419f8f30 \
+                sha256 7ffa46f8c619377cdebcd17721b6b21ecf6659850179f96fec3d1035cf5a0cdc
 
 use_configure	no
 
