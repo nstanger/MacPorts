@@ -2,19 +2,19 @@
 
 PortSystem		    1.0
 
-name			    pgtcl
+name			    Pgtcl
 version			    2.6.3
-#revision            2
+revision            2
 categories		    databases
 maintainers		    nstanger-local
 description 		Tcl PostgreSQL interface
 long_description	Tcl client interface to PostgreSQL
-homepage		    http://flightaware.github.io/Pgtcl/
-master_sites		https://github.com/flightaware/Pgtcl/tarball/master
+homepage		    http://flightaware.github.io/${name}/
+master_sites		https://github.com/flightaware/${name}/archive/
+distfiles           v${version}${extract.suffix}
 platforms		    darwin
-checksums		    rmd160  415410c21895f9263a2ff703d04ed374c25ad562 \
-                    sha256  3fd56901af487cc0a800eb88aedf7e0405e604c159a6f76d6ed95181123adbb2
-worksrcdir          ${name}${version}
+checksums		    rmd160  564b4c1d2caf11533dcc4204c668bec2fcc9646c \
+                    sha256  7950d2640dd206dd07ad36ea96363f3d436d3d2be3fec8993c11f363c55f0d22
 
 use_autoconf        yes
 use_parallel_build  no
@@ -23,11 +23,7 @@ configure.args      --prefix=${prefix} --exec-prefix=${prefix}
 depends_lib		    port:tcl \
 			        port:postgresql10
 
-post-extract {
-    file rename [glob ${workpath}/flightaware-Pgtcl-*] ${worksrcpath}
-}
-
-destroot.target     install-binaries install-libraries
+destroot.target     install-binaries
 
 # livecheck.type  regex
 # livecheck.url   http://pgfoundry.org/frs/?group_id=1000086
