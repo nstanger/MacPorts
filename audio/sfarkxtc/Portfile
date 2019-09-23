@@ -5,7 +5,7 @@ PortSystem          1.0
 
 name                sfarkxtc
 version             3.0
-revision            1
+revision            2
 categories          audio
 license             GPL-3
 maintainers         nstanger-local
@@ -19,8 +19,8 @@ master_sites        https://github.com/raboof/${name}/archive/
 distfiles           master.zip
 use_zip             yes
 
-checksums           rmd160  713ed62585ab8295c3ded391efb0bf7571d65f7c \
-                    sha256  e9a3cb2ece15cef409a1f0489d86d3c19888641589a5d02fb32cbc2889d3198e
+checksums           rmd160  e85e6b947c0c1c02983abc37b57cfb46bb479bf8 \
+                    sha256  d30cdfebd20ee67f1fa155f1db9564cd914187f211dd328f6e87349397887634
 
 patchfiles          Makefile-${name}.diff
 
