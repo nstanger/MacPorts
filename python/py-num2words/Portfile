@@ -1,0 +1,55 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=Portfile:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           python 1.0
+PortGroup           select 1.0
+
+name                py-num2words
+version             0.5.10
+revision            0
+categories-append   text
+license             LGPL-2.1
+platforms           darwin
+supported_archs     noarch
+
+maintainers         nstanger-local
+
+description         Convert words to numbers in multiple languages
+long_description    \
+    num2words is a library that converts numbers like 42 to words like forty-two. \
+    It supports multiple languages and can even generate ordinal numbers like forty-second \
+    (although this last feature is a bit buggy for some languages at the moment).
+
+homepage            https://github.com/savoirfairelinux/${python.rootname}
+master_sites        pypi:[string index ${python.rootname} 0]/${python.rootname}/
+distname            ${python.rootname}-${version}
+python.versions     27 34 35 36 37
+
+checksums           rmd160  49c72c1e0855f18a15f16d1e3e3da54dd0775a86 \
+                    sha256  37cd4f60678f7e1045cdc3adf6acf93c8b41bf732da860f97d301f04e611cc57
+
+if {${name} ne ${subport}} {
+    depends_lib-append  port:py${python.version}-setuptools
+
+    depends_run-append  port:num2words_select \
+                        port:py${python.version}-docopt
+
+    select.group        num2words
+    select.file         num2words${python.version}
+
+    post-destroot {
+        set docdir ${prefix}/share/doc/${subport}
+        xinstall -m 0644 -W ${worksrcpath} README.rst COPYING CHANGES.rst \
+            ${destroot}${docdir}
+    }
+
+    notes "
+    The executable is installed as\
+    '${prefix}/bin/${python.rootname}-${python.branch}'. To symlink it to\
+    '${prefix}/bin/${python.rootname}', run:
+
+        sudo port select --set ${select.group} ${select.file}
+    "
+
+    livecheck.type  none
+}
