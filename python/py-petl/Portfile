@@ -8,7 +8,7 @@ set my_name         petl
 set _n              [string index ${my_name} 0]
 name                py-${my_name}
 version             1.3.0
-revision            0
+revision            6
 categories-append   textproc
 license             MIT
 maintainers         nstanger-local
@@ -31,82 +31,90 @@ python.versions     27 34 35 36 37
 
 python.link_binaries    yes
 
-if {${version} < 34} {
-    depends_build-append port:py-setuptools_scm
-} else {
+if {${name} ne ${subport}} {
+    livecheck.type  none
     depends_build-append port:py${python.version}-setuptools_scm
-}
 
-variant excel description {support for Microsoft Excel spreadsheets} {
-    if {${version} < 34} {
-        depends_run-append port:py-xlrd
-        depends_run-append port:py-xlwt
-        depends_run-append port:py-openpyxl
-    } else {
+    variant excel description {support for Microsoft Excel spreadsheets} {
         depends_run-append port:py${python.version}-xlrd
         depends_run-append port:py${python.version}-xlwt
         depends_run-append port:py${python.version}-openpyxl
     }
-}
-variant hdf5 description {support for HDF5 files} {
-    if {${version} < 34} {
-        depends_run-append port:py-tables
-    } else {
+    variant hdf5 description {support for HDF5 files} {
         depends_run-append port:py${python.version}-tables
     }
-}
-variant numpy description {support for numpy arrays} {
-    if {${version} < 34} {
-        depends_run-append port:py-numpy
-    } else {
+    variant numpy description {support for numpy arrays} {
         depends_run-append port:py${python.version}-numpy
     }
-}
-variant pandas description {support for pandas DataFrames} {
-    if {${version} < 34} {
-        depends_run-append port:py-pandas
-    } else {
+    variant pandas description {support for pandas DataFrames} {
         depends_run-append port:py${python.version}-pandas
     }
-}
-variant postgresql description {support for PostgreSQL databases} {
-    if {${version} < 34} {
-        depends_run-append port:py-psycopg2
-        depends_run-append port:py-sqlalchemy
-    } else {
+    variant postgresql12 conflicts postgresql94 postgresql95 postgresql96 \
+            postgresql10 postgresql11 \
+            description "support for PostgreSQL v12 databases" {
+                depends_lib-append  port:postgresql12
+    }
+    variant postgresql11 conflicts postgresql94 postgresql95 postgresql96 \
+            postgresql10 postgresql12 \
+            description "support for PostgreSQL v11 databases" {
+                depends_lib-append  port:postgresql11
+    }
+    variant postgresql10 conflicts postgresql94 postgresql95 postgresql96 \
+            postgresql11 postgresql12 \
+            description "support for PostgreSQL v10 databases" {
+                depends_lib-append  port:postgresql10
+    }
+    variant postgresql96 conflicts postgresql94 postgresql95 \
+            postgresql10 postgresql11 postgresql12 \
+            description "support for PostgreSQL v9.6 databases" {
+                depends_lib-append  port:postgresql96
+    }
+    variant postgresql95 conflicts postgresql94 postgresql96 \
+            postgresql10 postgresql11 postgresql12 \
+            description "support for PostgreSQL v9.5 databases" {
+                depends_lib-append  port:postgresql95
+    }
+    variant postgresql94 conflicts postgresql95 postgresql96 \
+            postgresql10 postgresql11 postgresql12 \
+            description "support for PostgreSQL v9.4 databases" {
+                depends_lib-append  port:postgresql94
+    }
+    if {
+        [variant_isset postgresql94] ||
+        [variant_isset postgresql95] ||
+        [variant_isset postgresql96] ||
+        [variant_isset postgresql10] ||
+        [variant_isset postgresql11] ||
+        [variant_isset postgresql12]
+    } {
+        # Note that the default PostgreSQL variant for the psycopg2 port
+        # may not match that of the installed PostgreSQL port. The portfile
+        # syntax doesn't support port dependencies with specific variants:
+        # <https://lists.macports.org/pipermail/macports-users/2015-September/039201.html>
+        # The solution is to set the default PostgreSQL variant in
+        # /opt/local/etc/macports/variants.conf (which actually makes sense
+        # in general anyway).
         depends_run-append port:py${python.version}-psycopg2
         depends_run-append port:py${python.version}-sqlalchemy
+        notes-append "
+If you find that this causes a different version of PostgreSQL to be installed, this is due to the default variants on the psycopg port.
+
+To fix this, add your preferred PostgreSQL variant (e.g., +postgresql11) to /opt/local/etc/macports/variants.conf.
+
+"
     }
-}
-variant whoosh description {support for Whoosh text indexes} {
-    if {${version} < 34} {
-        depends_run-append port:py-whoosh
-    } else {
+    variant whoosh description {support for Whoosh text indexes} {
         depends_run-append port:py${python.version}-whoosh
     }
-}
-variant xpath description {support for XPath expressions on XML files} {
-    if {${version} < 34} {
-        depends_run-append port:py-lxml
-    } else {
+    variant xpath description {support for XPath expressions on XML files} {
         depends_run-append port:py${python.version}-lxml
     }
-}
 
-# possible additional variants, require new portfiles
-# N intervaltree==2.0.4
-# N PyMySQL==0.6.6
-
-if {${name} ne ${subport}} {
-#     test.run  yes
-#     test.cmd  ${python.bin} setup.py test
-# from docs: nosetests -v petl
-
-    livecheck.type  none
-
+    # possible additional variants, require new portfiles
+    # N intervaltree==2.0.4
+    # N PyMySQL==0.6.6
 } else {
     livecheck.type  regex
-    livecheck.url   https://pypi.python.org/pypi/${my_name}/json
-    livecheck.regex "${my_name}-(\\d+(?:\\.\\d+)*)${extract.suffix}"
+    livecheck.url   https://pypi.python.org/pypi/petl
+    livecheck.regex petl (\\d+\\.\\d+\\.\\d+)
 }
-
