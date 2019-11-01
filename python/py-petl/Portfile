@@ -7,7 +7,7 @@ PortGroup           python 1.0
 set my_name         petl
 set _n              [string index ${my_name} 0]
 name                py-${my_name}
-version             1.2.0
+version             1.3.0
 revision            0
 categories-append   textproc
 license             MIT
@@ -25,11 +25,17 @@ homepage            https://github.com/alimanfoo/${my_name}
 master_sites        pypi:${_n}/${my_name}/
 distname            ${my_name}-${version}
 
-checksums          sha256  9f10da5719d731844ccc278f6dfc092e17eb93197d92c556a9d5903202226863
+checksums          sha256  943a6e3211616d25ebc4dcd900ca4f96f53ccd9dbb612271a23a7efdaf3f8c00
 
 python.versions     27 34 35 36 37
 
 python.link_binaries    yes
+
+if {${version} < 34} {
+    depends_build-append port:py-setuptools_scm
+} else {
+    depends_build-append port:py${python.version}-setuptools_scm
+}
 
 variant excel description {support for Microsoft Excel spreadsheets} {
     if {${version} < 34} {
